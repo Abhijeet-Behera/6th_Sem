@@ -1,0 +1,98 @@
+class Time:
+    def __init__(self, hour=0, minute=0, sec=0):
+        
+        self.hour = hour
+        self.minute = minute
+        self.sec = sec
+
+    @property
+    def hour(self):
+        return self._hour
+
+    @hour.setter
+    def hour(self, hour):
+        if not (0 <= hour <= 23): 
+            raise ValueError(f'Hour({hour}) must be 0-23')
+        self._hour = hour
+
+    @property
+    def minute(self):
+        return self._minute
+
+    @minute.setter
+    def minute(self, minute):
+        if not (0 <= minute <= 59): 
+            raise ValueError(f'Minute({minute}) must be 0-59')
+        self._minute = minute
+
+    @property
+    def sec(self):
+        return self._sec
+
+    @sec.setter
+    def sec(self, sec):
+        if not (0 <= sec <= 59): 
+            raise ValueError(f'Second({sec}) must be 0-59')
+        self._sec = sec
+
+    def set_time(self, hour=0, minute=0, sec=0):
+        self.hour = hour
+        self.minute = minute
+        self.sec = sec
+
+    def __repr__(self):
+        return f'Time(hour={self.hour}, minute={self.minute}, sec={self.sec})'
+
+    def __str__(self):
+        hour12 = '12' if self.hour in (0, 12) else str(self.hour % 12)
+        return (f'{hour12}:{self.minute:02d}:{self.sec:02d}'
+                f'{"AM" if self.hour < 12 else "PM"}')
+
+if __name__ == "__main__":
+    # Create default time 
+    t1 = Time()
+    print("Default Time:")
+    print("repr:", repr(t1))
+    print("str:", str(t1))
+    print()
+
+    # Modify time
+    t2 = Time()
+    t2.hour = 23
+    t2.minute = 59
+    t2.sec = 59
+    print("Modified Time:")
+    print("repr:", repr(t2))
+    print("str:", str(t2))
+    print()
+
+    # Using set_time()
+    t2.set_time(9, 5, 7)
+    print("After set_time():")
+    print("repr:", repr(t2))
+    print("str:", str(t2))
+    print()
+
+    #testing validation
+    try:
+        t3=Time(25,0,0)
+    except ValueError as e:
+        print("Error caught:",e)
+
+
+
+#OUTPUT
+
+#Default Time:
+#repr: Time(hour=0, minute=0, sec=0)
+#str: 12:00:00AM
+
+#Modified Time:
+#repr: Time(hour=23, minute=59, sec=59)
+#str: 11:59:59PM
+
+#After set_time():
+#repr: Time(hour=9, minute=5, sec=7)
+#str: 9:05:07AM
+
+#Error caught: Hour(25) must be 0-23
