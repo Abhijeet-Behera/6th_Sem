@@ -1,0 +1,17 @@
+1)Create a simple topolgy
+and do the IP config of PC
+2) confi the router interface by cli moe
+3)crate local user account
+4)enable local authencitation on VTY vertual TeleiType Lines, thse r the logicall interface on cisco netwroks that allow remote access,
+"login local" -> instructes the router to authenticate the user using the loccal user database.
+"transport telnet"-> allows th etelnet based remote acces
+5) encrypet the plaintext password
+6)enable secrate password for entering into the privilaged mode execute mode.
+thhis step use MD-5 hashing
+7) varify telnet authentication
+8)SSH authentication-:
+For it we need to set host name amd domain name
+9) generate RSA key
+10) enable SSH and disable telnet
+enable ssh and disable exiting protocal
+11) varification
