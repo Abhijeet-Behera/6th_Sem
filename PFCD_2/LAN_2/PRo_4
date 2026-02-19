@@ -1,0 +1,18 @@
+class ABC:
+    def __init__(self):
+        self.property=80000.00
+    def display_property(self):
+        print('ABC property',self.property)
+class XYZ(ABC):
+    def __init__(self):
+        self.property=20000.00
+    def display_property(self):
+        print('ABC property',self.property)
+
+S=XYZ()
+S.display_property()
+
+
+
+#OUTPUT
+#ABC property 20000.0
