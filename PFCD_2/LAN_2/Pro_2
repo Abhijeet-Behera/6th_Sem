@@ -1,0 +1,51 @@
+#Private Attributes:
+'''in my class if i have "__a" then a is a private attribute , and this is called as "Name Mangling" and this
+    is done ny Python ex-> "_Myclass__a". we can access public attribute by 
+    O.a      Right
+    O.__b    Wrong
+    
+    so we can do it by '''
+
+
+class PrivateClass:
+    def __init__ (self):
+        #initializiny attributes
+        self.public_data="public"     # Public attribute
+        self.__private_data="private" #Private attribute (named Mangled)
+    def get_private_data(self):
+        #public method to access private attribute
+        return self.__private_data
+
+if __name__=="__main__":
+    my_obj=PrivateClass()
+    print("Accessing public attribute:")
+    print(my_obj.public_data) # works
+    print()
+    print("Trying to access private attribute directly:")
+    try:
+        print(my_obj.__private_data)
+    except AttributeError as e:
+        print("Error:",e)
+        
+    print()
+    print("Accessing private attribute using a public method:")
+    print(my_obj.get_private_data()) #correct way
+    print()
+    print("Accessing private attribute using name mangling:")
+    # Python renames __private_data to _PrivateClass__private_data
+    print(my_obj._PrivateClass__private_data) #not recommended
+
+
+
+#OUTPUT
+#Accessing public attribute:
+#public
+
+#Trying to access private attribute directly:
+#Error: 'PrivateClass' object has no attribute '__private_data'
+
+#Accessing private attribute using a public method:
+#private
+
+#Accessing private attribute using name mangling:
+#private
