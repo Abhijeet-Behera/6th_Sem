@@ -8,4 +8,7 @@ class XYZ(ABC):
 
 S=XYZ()
 S.display_property()
+
+#OUTPUT
+#ABC property 80000.00
     
