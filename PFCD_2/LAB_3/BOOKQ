@@ -1,0 +1,75 @@
+
+#Inheritance using getter and setter methods
+#question from th BOOK
+
+from decimal import Decimal
+
+
+class CommissionEmployee:
+    """An employee who gets paid commission based on gross sales."""
+
+    def __init__(self, first_name, last_name, ssn, gross_sales, commission_rate):
+        """Initialize CommissionEmployee's attributes."""
+        self._first_name = first_name
+        self._last_name = last_name
+        self._ssn = ssn
+        self.gross_sales = gross_sales          # Validate via property
+        self.commission_rate = commission_rate  # Validate via property
+
+    @property
+    def first_name(self):
+        return self._first_name
+
+    @property
+    def last_name(self):
+        return self._last_name
+
+    @property
+    def ssn(self):
+        return self._ssn
+
+    @property
+    def gross_sales(self):
+        return self._gross_sales
+
+    @gross_sales.setter
+    def gross_sales(self, sales):
+        if sales < Decimal('0.00'):
+            raise ValueError("Gross sales must be >= 0.0")
+        self._gross_sales = sales
+
+    @property
+    def commission_rate(self):
+        return self._commission_rate
+
+    @commission_rate.setter
+    def commission_rate(self, rate):
+        if rate <= Decimal('0.0') or rate >= Decimal('1.0'):
+            raise ValueError("Commission rate must be > 0.0 and < 1.0")
+        self._commission_rate = rate
+
+    def earnings(self):
+        """Calculate earnings."""
+        return self.gross_sales * self.commission_rate
+
+    def __repr__(self):
+        return (f'CommissionEmployee: {self.first_name}{self.last_name}\n'
+                f'Social Security Number: {self.ssn}\n'
+                f'Gross sales:{self.gross_sales:.2f}\n'
+                f'commission Rate:{self.commission_rate:.2f}')
+    
+class SalariedCommissionEmployee(CommissionEmployee):
+    def __init__(self, first_name, last_name, ssn, gross_sales, commission_rate,base_salary):
+        super().__init__(self, first_name, last_name, ssn, gross_sales, commission_rate)
+        self.base_salary=base_salary
+        
+    @property
+    def base_salary(self):
+        return self.base_salary
+    
+    @base_salary.setter
+    def base_salary(self,salary):
+        if salary < Decimal('0.00'):
+            raise valueError('Base salary must be >=0')
+        self._base_salary=salary
+    
