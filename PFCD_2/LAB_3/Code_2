@@ -1,0 +1,9 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+celsius = lambda f:5/9*(f-32)
+temps =[(f,celsius(f)) for f in range (0,101,10)]#creating list of tupples for 0 to 100 F in 10 degree increment
+temps_df = pd.DataFrame(temps, columns=['Fahrenheit','Celsius'])#Dataframe
+axes = temps_df.plot(x='Fahrenheit',y='Celsius', style='.-', legend=True)#plotting the datapoints
+axes.set_ylabel('Celsius')#setting y-axis label
+plt.show()
