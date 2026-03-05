@@ -4,3 +4,26 @@ step-2:config the IP address
 step-3:Router configuration
 step-4:verofy conectivity
 step-5:create standard access control list(ACL)(Blockes specific Host)
+step-6:Apply this ACL to Router Interface
+  Apply this ACL on clinet side
+  interface g0/0
+  ip access-group 10 in
+  exit
+step-7:Test Standard ACL
+  ping PC0(192.168.1.10)-ping server-pass
+  ping PC1(192.168.1.20)-ping server-fail
+
+
+
+
+
+
+CLI
+
+
+
+
+NOTES:
+>0.0.0.0 meams match that excat IP addres only
+>"acc"
+>"access-list 10 deny 192.168.1.0 0.0.0.255"
