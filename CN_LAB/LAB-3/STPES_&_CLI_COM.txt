@@ -17,6 +17,11 @@ step-8:Create Extended ACL
   "access-list 100 permit tcp host 192.168.1.10 host 192.168.2.100 eq 80
    access-list 100 deny tcp host 192.168.1.20 host 192.168.2.100 eq 21
    access-list 100 permit ip any any"
+step-9:Appy the Extended ACL in the router intface 
+  "interface g0/1
+   no ip access-group 10 in
+   ip access-group 100 in
+   exit"
 
 
 
