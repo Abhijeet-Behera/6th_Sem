@@ -22,6 +22,12 @@ step-9:Appy the Extended ACL in the router intface
    no ip access-group 10 in
    ip access-group 100 in
    exit"
+step-10:Configure Server Services
+  desktop - ip config (already set)
+  Service tab : 
+    Enable HTTP
+    Enable FTP
+step-11:Test Extended ACL
 
 
 
